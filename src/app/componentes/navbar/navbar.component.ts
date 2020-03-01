@@ -9,13 +9,15 @@ import { Route } from '@angular/compiler/src/core';
 })
 export class NavbarComponent implements OnInit {
 
+  areas: any = [
+    {nombre: 'Area 1', path: '/home'},
+    {nombre: 'Login', path: '/home'},
+  ];
+
   constructor( private route: Router) { }
 
   ngOnInit(): void {
   }
 
-  irHome() {
-    this.route.navigateByUrl('/home');
-    }
 
 }
