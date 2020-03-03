@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  comenzar: any = false;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  begin() {
+    this.comenzar = true;
   }
 
 }

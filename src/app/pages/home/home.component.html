@@ -1,6 +1,12 @@
 <section id="home" class="hero">
     <div class="container">
         <h1>¡Bienvenidos al proyecto de estadía!</h1>
+        <button type="button" class="btn btn-primary btn-lg" (click)="begin()">Comenzar</button>
     </div>
 </section>
 
+<section id="begin" *ngIf="comenzar === true">
+    <div class="container">
+        <h1>Comenzó</h1>
+    </div>
+</section>
