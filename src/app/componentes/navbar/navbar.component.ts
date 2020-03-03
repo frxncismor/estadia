@@ -10,8 +10,8 @@ import { Route } from '@angular/compiler/src/core';
 export class NavbarComponent implements OnInit {
 
   areas: any = [
-    {nombre: 'Area 1', path: '/home'},
-    {nombre: 'Login', path: '/home'},
+    {nombre: 'Administrador', path: '/home'},
+    {nombre: 'Login', path: '/login'},
   ];
 
   constructor( private route: Router) { }
