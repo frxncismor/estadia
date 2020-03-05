@@ -1,12 +1,25 @@
-<section id="home" class="hero">
+<section id="home" class="hero" *ngIf="!comenzar">
     <div class="container">
         <h1>¡Bienvenidos al proyecto de estadía!</h1>
         <button type="button" class="btn btn-primary btn-lg" (click)="begin()">Comenzar</button>
     </div>
 </section>
 
-<section id="begin" *ngIf="comenzar === true">
+<section id="begin" *ngIf="comenzar">
     <div class="container">
-        <h1>Comenzó</h1>
+        <h1>Seccion 1</h1>
+        <button type="button" class="btn btn-danger btn-lg" (click)="back2begin()">Regresar</button>
+    </div>
+</section>
+<section id="begin" *ngIf="comenzar">
+    <div class="container">
+        <h1>Seccion 2</h1>
+        <button type="button" class="btn btn-danger btn-lg" (click)="back2begin()">Regresar</button>
+    </div>
+</section>
+<section id="begin" *ngIf="comenzar">
+    <div class="container">
+        <h1>Seccion 3</h1>
+        <button type="button" class="btn btn-danger btn-lg" (click)="back2begin()">Regresar</button>
     </div>
 </section>

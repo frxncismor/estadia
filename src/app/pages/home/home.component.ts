@@ -17,4 +17,8 @@ export class HomeComponent implements OnInit {
     this.comenzar = true;
   }
 
+  back2begin(){
+    this.comenzar = false;
+  }
+
 }
