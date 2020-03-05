@@ -13,9 +13,15 @@ export class NavbarComponent implements OnInit {
     {nombre: 'Login', path: '/login'},
   ];
 
-  constructor( private route: Router) { }
+  constructor( private route: Router) {
+    console.log("UrlActual: ", this.route.url);
+   }
 
   ngOnInit(): void {
+  }
+
+  Home(){
+  
   }
 
 
