@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit {
   }
 
   Home(){
-  
+    this.route.navigateByUrl('/');
   }
 
 

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, RouteConfigLoadEnd } from '@angular/router';
+import { Route } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'app-about-who',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutWhoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: Router) { }
 
   ngOnInit(): void {
   }
+
+  back2begin(){
+    this.route.navigateByUrl('/');
+  }
+
 
 }

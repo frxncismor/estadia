@@ -1,13 +1,13 @@
-<section id="home" class="hero" *ngIf="!comenzar">
+<section id="home" class="hero animated fadeInUp" *ngIf="!comenzar">
     <div class="container">
         <h1>¡Bienvenidos al proyecto de estadía!</h1>
         <button type="button" class="btn btn-primary btn-lg " (click)="begin()">Comenzar</button>
     </div>
 </section>
 
-<section id="begin" *ngIf="comenzar" class="who">
-    <div class="container-lg " style="padding-top: 1%;" *ngFor="let seccion of secciones">
-        <div class="card mb-3 " style="max-width: 100%;">
+<section id="begin" *ngIf="comenzar">
+    <div class="container-lg" style="padding-top: 1%;" *ngFor="let seccion of secciones">
+        <div class="card mb-3" [ngClass]="seccion.animate" style="max-width: 100%;">
             <div class="row no-gutters">
               <div class="col-md-4">
                 <img [src]=seccion.img class="card-img" alt="...">
@@ -28,7 +28,7 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <button type="button"  class="btn btn-dark text-white btn-lg btn-block" (click)="back2begin()">Regresar</button>
+            <button type="button"  class="btn btn-dark text-white btn-lg btn-block animated fadeInUp" (click)="back2begin()">Regresar</button>
         </div>
         <div class="col-md-4" > <br> </div>
     </div>
