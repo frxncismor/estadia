@@ -13,15 +13,15 @@ export class HomeComponent implements OnInit {
   secciones = [
     {
       id: 'who',
-      title: "¿Quien realiza el proyecto?",
-      description: "Conoce quien está detras del proyecto",
+      title: "¿Quién realiza el proyecto?",
+      description: "Conoce quien está detrás del proyecto",
       img: "https://cdn.lynda.com/course/182920/182920-637159212085301134-16x9.jpg",
       class: 'btn btn-primary btn-lg',
       animate : 'animated fadeInLeft'
     },
     {
       id: 'what',
-      title: "¿De que se trata el proyecto?",
+      title: "¿De qué se trata el proyecto?",
       description: "Te explicamos como funciona el proyecto",
       img: 'https://www.hiretheyouth.org/wp-content/uploads/2018/09/Project-Collaboration.jpg',
       class: 'btn btn-danger btn-lg',
@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
     },
     { 
       id: 'tech', 
-      title: "Tecnologias", 
+      title: "Tecnologías", 
       description: "Conoce las tecnologías con las que se creó el proyecto",
       img: 'https://finanz.com.mx/wp-content/uploads/2018/06/incertidumbre.jpg',
       class: 'btn btn-info btn-lg',
