@@ -9,6 +9,8 @@ import { Route } from '@angular/compiler/src/core';
 })
 export class AboutWhoComponent implements OnInit {
 
+  title: any = "sobre mi";
+  title2: any = "conocimientos"
   constructor(private route: Router) { }
 
   ngOnInit(): void {
