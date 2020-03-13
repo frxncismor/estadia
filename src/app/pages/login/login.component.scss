@@ -1,0 +1,35 @@
+.form{
+    width: 21rem;
+    height: 30rem;
+    margin: 13% 0% 0% 41%;
+    border-radius: 10px;
+}
+
+.container {
+    border: 1px solid blue;
+}
+
+.loginImg{
+    padding-top: 35px;
+}
+
+.user {
+    margin-bottom: 10px;
+    margin-top: 41px;
+}
+
+@media (width: 360px){
+    .form{
+        margin: 0% 0% 0% 7%;
+    }
+}
+@media (width: 411px){
+    .form{
+        margin: 0% 0% 0% 13%;
+    }
+}
+@media (height: 823px){
+    .form{
+        margin: 24% 0% 0% 13%;
+    }
+}
