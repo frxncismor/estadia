@@ -4,13 +4,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ComponentesModule } from './componentes/componentes.module';
-
+import { firebase } from '@firebase/app';
+import '@firebase/firestore';
+import '@firebase/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { config } from 'rxjs';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { firestore } from 'firebase'; 
 
 const firebaseConfig = {
   apiKey: "AIzaSyB1bL5JURTc0KVLExWaZAlSPIAb7PsoJmQ",
@@ -28,14 +31,13 @@ const firebaseConfig = {
     AppComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(firebaseConfig),
     NgbModule,
     BrowserModule,
     AppRoutingModule,
     ComponentesModule,
-    AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
-    AngularFireDatabaseModule
-
+    AngularFireDatabaseModule,
   ],
   providers: [AngularFirestore],
   bootstrap: [AppComponent]
