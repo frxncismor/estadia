@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { error } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-login',
@@ -12,23 +14,26 @@ export class LoginComponent implements OnInit {
     user: '',
     pass: ''
   };
+  
+  public error;
+  constructor(private route: Router, private auth : AuthService) { }
 
-  private LoginSuccess : any = {
-    user: 'test',
-    pass: '123'
-  };
-
-  constructor(private route: Router) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   login(user, pass){
-    console.log("LoginForm: ", this.LoginForm);
     console.log("Usuario y contraseña ", user, pass);
-    if(user == this.LoginSuccess.user && pass == this.LoginSuccess.pass){
-      this.route.navigateByUrl('/home');
-    }
+    this.auth.login(user, pass).catch(error =>{
+      if(error){
+        console.log("ERROR", error.message)
+        this.error = error.message;
+      }
+    });
+
+
+
   }
+
+  
+
 
 }

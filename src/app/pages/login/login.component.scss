@@ -1,7 +1,7 @@
 .form{
     width: 21rem;
     height: 30rem;
-    margin: 13% 0% 0% 41%;
+    margin: 10% 0% 0% 41%;
     border-radius: 10px;
 }
 
@@ -15,7 +15,7 @@
 
 .user {
     margin-bottom: 10px;
-    margin-top: 41px;
+    margin-top: 12px;
 }
 
 @media (width: 360px){
@@ -32,4 +32,16 @@
     .form{
         margin: 24% 0% 0% 13%;
     }
+}
+.error{
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 0px 10px 0px;
+    text-align: center;
+}
+
+.row{
+    padding-left: 14px;
+    padding-right: 14px;
 }

@@ -5,19 +5,39 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ComponentesModule } from './componentes/componentes.module';
 
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { config } from 'rxjs';
+import { WelcomeComponent } from './pages/welcome/welcome.component';
+import { AngularFirestore } from '@angular/fire/firestore';
 
+const firebaseConfig = {
+  apiKey: "AIzaSyB1bL5JURTc0KVLExWaZAlSPIAb7PsoJmQ",
+  authDomain: "testhosting-23ad5.firebaseapp.com",
+  databaseURL: "https://testhosting-23ad5.firebaseio.com",
+  projectId: "testhosting-23ad5",
+  storageBucket: "testhosting-23ad5.appspot.com",
+  messagingSenderId: "12079392665",
+  appId: "1:12079392665:web:a973034f71fe7e74e09508",
+  measurementId: "G-FSYG13P863"
+};
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     NgbModule,
     BrowserModule,
     AppRoutingModule,
-    ComponentesModule
+    ComponentesModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
+
   ],
-  providers: [],
+  providers: [AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
