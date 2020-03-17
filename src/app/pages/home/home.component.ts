@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: "app-home",
@@ -45,7 +46,7 @@ export class HomeComponent implements OnInit {
     }
   ];
 
-  constructor(private route: Router) {}
+  constructor(private route: Router, public auth: AuthService) {}
 
   ngOnInit(): void {}
 
@@ -55,6 +56,10 @@ export class HomeComponent implements OnInit {
 
   back2begin() {
     this.comenzar = false;
+  }
+ 
+  Perfil() {
+    this.route.navigateByUrl('/welcome');
   }
 
   knowMore(id) {

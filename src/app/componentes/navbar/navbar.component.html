@@ -1,4 +1,10 @@
-<div class="container-fluid sticky-top ">
+<div *ngIf="auth.user$ | async; then authenticated else random">
+
+</div>
+
+<ng-template #random >
+
+  <div class="container-fluid sticky-top" >
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3 mb-5 bg-white rounded">
        <span style="width: 30%;">
         <a class="navbar-brand click" (click)="Home()"><img src="https://image.flaticon.com/icons/svg/2641/2641405.svg" width="50px" alt=""> Estadía </a>
@@ -8,12 +14,40 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav" style="margin-left: 63%;">
           <ul class="navbar-nav">
-            <li class="nav-item active" *ngFor="let area of areas">
-              <a class="nav-link" [routerLink]="area.path" routerLinkActive="router-link-active" >{{area.nombre}}
-                <img *ngIf="area.nombre === 'Login'" src="https://image.flaticon.com/icons/svg/1828/1828506.svg" width="20px" alt="">
-              </a>
+
+            <li class="nav-item active" >
+                <button class="btn btn-link" (click)="auth.googleSignin()">Login
+                  <img src="https://image.flaticon.com/icons/svg/1828/1828506.svg" width="20px" alt="">
+                </button>
+            </li>
+  
+          </ul>
+        </div>
+      </nav>
+  </div>
+
+</ng-template>
+
+<ng-template  #authenticated>
+  <div class="container-fluid sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3 mb-5 bg-white rounded">
+       <span style="width: 30%;">
+        <a class="navbar-brand click" (click)="Home()"><img src="https://image.flaticon.com/icons/svg/2641/2641405.svg" width="50px" alt=""> Estadía </a>
+       </span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav" style="margin-left: 63%;">
+          <ul class="navbar-nav">
+           
+            <li class="nav-item active" >
+                <button  class="btn btn-link" (click)="auth.signOut()">Logout
+                  <img src="https://image.flaticon.com/icons/svg/1828/1828506.svg" width="20px" alt="">
+                </button>
+    
             </li>
           </ul>
         </div>
       </nav>
-</div>
+  </div>
+</ng-template>

@@ -12,8 +12,8 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { config } from 'rxjs';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { firestore } from 'firebase'; 
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
+import { firestore } from 'firebase';
 
 const firebaseConfig = {
   apiKey: "AIzaSyB1bL5JURTc0KVLExWaZAlSPIAb7PsoJmQ",
@@ -38,8 +38,9 @@ const firebaseConfig = {
     ComponentesModule,
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    AngularFirestoreModule
   ],
-  providers: [AngularFirestore],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

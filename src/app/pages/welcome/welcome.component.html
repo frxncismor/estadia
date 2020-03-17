@@ -1,1 +1,26 @@
-<p>welcome works!</p>
+
+<div *ngIf="auth.user$ | async as user" class="container">
+
+    <div class="row">
+        <div class="col-md-4">
+            <img class="rounded" [src]="user.photoURL">
+        </div>
+        <div class="col-md-8">
+            <h3>Bienvenido, {{ user.displayName }}</h3>
+            <h6 class="email">e-mail: {{user.email}}</h6>
+
+            <div class="row">
+                <div class="col-md-12 botones">
+                    <button type="button" class="btn btn-primary">Info</button>
+                    <button type="button" class="btn btn-secondary">Admin</button>
+                    <button type="button" class="btn btn-success">Graficas</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+</div>
+
+
+<router-outlet></router-outlet>

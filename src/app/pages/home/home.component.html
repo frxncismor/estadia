@@ -1,4 +1,10 @@
-<section id="home" class="hero animated fadeInUp" *ngIf="!comenzar">
+
+<div *ngIf="auth.user$ | async; then authenticated else random">
+
+</div>
+
+<ng-template #random>
+  <section id="home" class="hero animated fadeInUp" *ngIf="!comenzar">
     <div class="container">
         <h1>¡Bienvenidos al proyecto de estadía!</h1>
         <button type="button" class="btn btn-primary btn-lg " (click)="begin()">Comenzar</button>
@@ -35,5 +41,47 @@
 </div>
 <br>
 
+</ng-template>
+
+<ng-template #authenticated>
+  <section id="home" class="hero animated fadeInUp" *ngIf="!comenzar">
+    <div class="container">
+        <h1>¡Bienvenidos al proyecto de estadía!</h1>
+        <button type="button" class="btn btn-primary btn-lg " (click)="begin()" style="margin-top: 2%; margin-left: -1%; width: 27%;">Comenzar</button>
+        <button type="button" class="btn btn-secondary btn-lg " (click)="Perfil()" style="margin-top: 2%; margin-left: -1%; width: 27%;">Perfil</button>
+    </div>
+</section>
+
+<section id="begin" *ngIf="comenzar">
+    <div class="container-lg" style="padding-top: 1%;" *ngFor="let seccion of secciones">
+        <div class="card mb-3" [ngClass]="seccion.animate" style="max-width: 100%;">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img [src]=seccion.img class="card-img" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{seccion.title}}</h5>
+                  <p class="card-text">{{seccion.description}}</p>
+                  <button type="button" [ngClass]="seccion.class" (click)="knowMore(seccion.id)">Conocer más</button>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+</section>
+
+<div class="container-fluid" *ngIf="comenzar">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <button type="button"  class="btn btn-dark text-white btn-lg btn-block animated fadeInUp" (click)="back2begin()">Regresar</button>
+        </div>
+        <div class="col-md-4" > <br> </div>
+    </div>
+</div>
+<br>
+
+</ng-template>
 
 

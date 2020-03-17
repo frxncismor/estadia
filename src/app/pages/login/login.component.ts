@@ -10,30 +10,18 @@ import { error } from '@angular/compiler/src/util';
 })
 export class LoginComponent implements OnInit {
 
-  public LoginForm : any = {
-    user: '',
-    pass: ''
-  };
-  
-  public error;
-  constructor(private route: Router, private auth : AuthService) { }
+
+  constructor(private route: Router, public auth: AuthService) { }
 
   ngOnInit(): void {}
 
-  login(user, pass){
-    console.log("Usuario y contraseña ", user, pass);
-    this.auth.login(user, pass).catch(error =>{
-      if(error){
-        console.log("ERROR", error.message)
-        this.error = error.message;
-      }
-    });
-
-
+  login() {
+    this.auth.googleSignin();
+    console.log(this.auth.googleSignin);
+  }
 
   }
 
   
 
 
-}

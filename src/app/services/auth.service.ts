@@ -1,49 +1,81 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from '../models/user.model'; // optional
 
-import { Router } from  "@angular/router";
-import { auth } from  'firebase/app';
-import { AngularFireAuth } from  "@angular/fire/auth";
-import { User } from  'firebase';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { auth } from 'firebase/app';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+
+import { Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  user: User;
-  constructor(public afAuth: AngularFireAuth, public router: Router, public fs: AngularFirestore) {
-    this.afAuth.authState.subscribe( user => {
-      console.log("USER: ", user);
-      if(user){
-        this.user = user;
-        localStorage.setItem('user', JSON.stringify(this.user));
-      } else {
-        localStorage.setItem('user', null);
-      }
-    })
-   }
+  user$: Observable<User>;
+  usr: Observable<User>;
 
-  async login(email: string, password: string) {
-    var result = await this.afAuth.auth.signInWithEmailAndPassword(email, password)
-    console.log("result", result);   
+  constructor(
+    private afAuth: AngularFireAuth,
+    private afs: AngularFirestore,
+    private router: Router
+  ) {
+    this.user$ = this.afAuth.authState.pipe(
+      switchMap(user => {
+        // Logged in
+        if (user) {
+          console.log(this.afs.doc<User>(`users/${user.uid}`).valueChanges());
+          return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+        } else {
+          // Logged out
+          return of(null);
+        }
+      })
+    );
+    this.usr = this.afAuth.authState.pipe(
+      switchMap(user => {
+        // Logged in
+        if (user) {
+          console.log("USUARIO", user);
+         return user.uid;
+        } else {
+          // Logged out
+          return of(null);
+        }
+      })
+    );
+  }
+
+  async googleSignin() {
+    const provider = new auth.GoogleAuthProvider();
+    const credential = await this.afAuth.auth.signInWithPopup(provider);
     this.router.navigateByUrl('/welcome');
+    return this.updateUserData(credential.user);
   }
 
-  async logout(){
+  private updateUserData(user) {
+    // Sets user data to firestore login
+
+    const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
+
+    const data = {
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL
+    };
+
+    return userRef.set(data, {merge: true});
+
+  }
+
+  async signOut() {
     await this.afAuth.auth.signOut();
-    localStorage.removeItem('user');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 
-  get isLoggedIn(): boolean {
-    const  user  =  JSON.parse(localStorage.getItem('user'));
-    return  user  !==  null;
-  }
 
-  getRoles(){
-    return this.fs.collection('roles').snapshotChanges();
-    // console.log("ROLES", roles);
-  }
 
-  
+
 }
