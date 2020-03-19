@@ -14,6 +14,9 @@ import { config } from 'rxjs';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { firestore } from 'firebase';
+import { UnauthorizedComponent } from './pages/unauthorized/unauthorized.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { UnauthComponent } from './pages/unauth/unauth.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyB1bL5JURTc0KVLExWaZAlSPIAb7PsoJmQ",
@@ -28,7 +31,8 @@ const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UnauthComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),

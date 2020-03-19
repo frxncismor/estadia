@@ -14,4 +14,8 @@ export class WelcomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  async rol(){
+    var isAdmin = await this.auth.CurrentUser();
+    console.log("ROL", isAdmin)
+  }
 }

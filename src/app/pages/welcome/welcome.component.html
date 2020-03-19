@@ -7,13 +7,13 @@
         </div>
         <div class="col-md-8">
             <h3>Bienvenido, {{ user.displayName }}</h3>
-            <h6 class="email">e-mail: {{user.email}}</h6>
+            <h6 class="email"><strong>e-mail:</strong> {{user.email}}</h6>
 
             <div class="row">
                 <div class="col-md-12 botones">
-                    <button type="button" class="btn btn-primary">Info</button>
-                    <button type="button" class="btn btn-secondary">Admin</button>
-                    <button type="button" class="btn btn-success">Graficas</button>
+                    <button type="button" class="btn btn-primary" [routerLink]="['info']" routerLinkActive="router-link-active" >Información</button>
+                    <button type="button" (click)="rol()" class="btn btn-secondary" [routerLink]="['admin']" routerLinkActive="router-link-active">Administrador</button>
+                    <button type="button" class="btn btn-success" [routerLink]="['graph']" routerLinkActive="router-link-active" [disabled]="user.graficas == false">Gráficas</button>
                 </div>
             </div>
         </div>
@@ -23,4 +23,6 @@
 </div>
 
 
-<router-outlet></router-outlet>
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
