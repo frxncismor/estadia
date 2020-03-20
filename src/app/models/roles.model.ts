@@ -1,4 +1,4 @@
-export class Roles {
-    ID: number;
-    Tipo: string;
-}
+export interface Roles { 
+    user?: boolean;
+    admin?: boolean;
+ }

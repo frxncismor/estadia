@@ -17,6 +17,9 @@ import { firestore } from 'firebase';
 import { UnauthorizedComponent } from './pages/unauthorized/unauthorized.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { UnauthComponent } from './pages/unauth/unauth.component';
+import { AdminGuard } from './guards/admin.guard';
+import { GraphsGuard } from './guards/graphs.guard';
+import { MenuComponent } from './pages/menu/menu.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyB1bL5JURTc0KVLExWaZAlSPIAb7PsoJmQ",
@@ -32,7 +35,7 @@ const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    UnauthComponent,
+    UnauthComponent
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
@@ -44,7 +47,7 @@ const firebaseConfig = {
     AngularFireDatabaseModule,
     AngularFirestoreModule
   ],
-  providers: [],
+  providers: [AdminGuard, GraphsGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

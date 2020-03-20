@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'about-objectives', loadChildren: () => import('./pages/about-objectives/about-objectives.module').then(m => m.AboutObjectivesModule)},
   { path: 'about-technologies', loadChildren: () => import('./pages/about-technologies/about-technologies.module').then(m => m.AboutTechnologiesModule)},
   { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule), canActivate: [AuthGuard]},
+  { path: 'menu', loadChildren: () => import('./pages/menu/menu.module').then(m => m.MenuModule)},
   { path: '**', component: NotFoundComponent}
 ];
 

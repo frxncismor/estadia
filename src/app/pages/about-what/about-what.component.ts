@@ -14,7 +14,7 @@ export class AboutWhatComponent implements OnInit {
   }
 
   back2begin(){
-    this.route.navigateByUrl('/');
+    this.route.navigateByUrl('/menu');
   }
 
 }

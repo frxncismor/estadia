@@ -10,14 +10,16 @@ import { IsAdminGuard } from 'src/app/guards/is-admin.guard';
 import { UnauthorizedComponent } from '../unauthorized/unauthorized.component';
 import { UnauthComponent } from '../unauth/unauth.component';
 import { NotAuthenticatedGuard } from 'src/app/guards/not-authenticated.guard';
+import { AdminGuard } from 'src/app/guards/admin.guard';
+import { GraphsGuard } from 'src/app/guards/graphs.guard';
 
 
 const routes = [
   { path: '', component: WelcomeComponent, children: [
     {path: '', component: InfoComponent},
     { path: 'info', component: InfoComponent },
-    { path: 'admin', component: AdminComponent, canActivate: [NotAuthenticatedGuard] },
-    { path: 'graph', component: GraficasComponent},
+    { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
+    { path: 'graph', component: GraficasComponent,  canActivate: [GraphsGuard]},
     { path: 'unauthorized', component: UnauthComponent},
 
   ] }

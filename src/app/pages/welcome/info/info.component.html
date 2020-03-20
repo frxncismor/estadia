@@ -1,29 +1,34 @@
-<div class="row">
-    <div class="col-md-12" >
-        <h5 class="text-center">Información</h5>
-    </div>
-</div>
-<br>
-<div class="row" *ngIf="auth.user$ | async as user">
-    <div class="col-md-6" >
-        <p class="text-center" ><strong>Rol</strong></p>
-        <h5 class="text-center text-info">{{user.rol}}</h5>
-        <div class="row">
-            <div class="col-md-12 botones" align="center">
-                <button type="button" class="btn btn-info"  style="margin-top: 2%; margin-left: -1%; width: 27%;" (click)="makeAdmin()">Admin</button>
-                <button type="button" class="btn btn-dark" style="margin-top: 2%; margin-left: -1%; width: 27%;" (click)="makeUser()" >User</button>
-            </div>
-        </div> <br>
-        <p class="text-center" ><strong>¿El usuario quiere gráficas?</strong></p>
-        <p class="text-center " ><strong *ngIf="user.graficas == true" class="text-success">Si</strong><strong *ngIf="user.graficas == false" class="text-danger">No</strong></p>
-        <div class="row">
-            <div class="col-md-12 botones" align="center">
-                <button type="button" class="btn btn-primary"  style="margin-top: 2%; margin-left: -1%; width: 27%;" (click)="yes()">Si</button>
-                <button type="button" class="btn btn-danger" style="margin-top: 2%; margin-left: -1%; width: 27%;" (click)="no()">No</button>
-            </div>
+<div class="container-fluid animated fadeIn">
+    <div class="row">
+        <div class="col-md-12" >
+            <h5 class="text-center">Información</h5>
         </div>
     </div>
-    <div class="col-md-6">
-        <img src="https://www.roastbrief.com.mx/wp-content/uploads/2017/10/Roastbrief-Sociedad-de-la-informaci%C3%B3n.jpg" width="150%"  alt="">
+    <br>
+    <div class="row" *ngIf="auth.user$ | async as user">
+        <div class="col-md-6" >
+            <p class="text-center" ><strong>Rol</strong></p>
+            <!-- <p>{{user.rol | json}}</p> -->
+            <h5 class="text-center text-info" *ngIf="user.rol.admin == true && user.rol.user == false">Administrador</h5>
+            <h5 class="text-center text-info" *ngIf="user.rol.admin == false && user.rol.user == true">Usuario</h5>
+            <div class="row">
+                <div class="col-md-12 botones" align="center">
+                    <button type="button" class="btn btn-info"  style="margin-top: 2%; margin-left: -1%; width: 27%;" (click)="makeAdmin()">Admin</button>
+                    <button type="button" class="btn btn-dark" style="margin-top: 2%; margin-left: -1%; width: 27%;" (click)="makeUser()" >User</button>
+                </div>
+            </div> <br>
+            <p class="text-center" ><strong>¿El usuario quiere gráficas?</strong></p>
+            <p class="text-center " ><strong *ngIf="user.graficas == true" class="text-success">Si</strong><strong *ngIf="user.graficas == false" class="text-danger">No</strong></p>
+            <div class="row">
+                <div class="col-md-12 botones" align="center">
+                    <button type="button" class="btn btn-primary"  style="margin-top: 2%; margin-left: -1%; width: 27%;" (click)="yes()">Si</button>
+                    <button type="button" class="btn btn-danger" style="margin-top: 2%; margin-left: -1%; width: 27%;" (click)="no()">No</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <img src="https://www.roastbrief.com.mx/wp-content/uploads/2017/10/Roastbrief-Sociedad-de-la-informaci%C3%B3n.jpg" width="150%"  alt="">
+        </div>
     </div>
+    
 </div>

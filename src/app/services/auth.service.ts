@@ -127,13 +127,14 @@ export class AuthService {
 
   makeAdmin(uid) {
     return  this.afs.collection('users').doc(uid).update({
-              rol: 'Administrador'
+              rol: { admin: true, user: false }
+              
             });
   }
 
   makeUser(uid) {
     return  this.afs.collection('users').doc(uid).update({
-              rol: 'Usuario'
+            rol: { admin: false, user: true }
             });
   }
   

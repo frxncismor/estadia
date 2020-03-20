@@ -1,8 +1,10 @@
+import { Roles } from './roles.model';
+
 export interface User {
     uid: string;
     email: string;
     photoURL?: string;
     displayName?: string;
-    rol?: string;
+    rol?: Roles;
     graficas?: boolean;
 }

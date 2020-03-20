@@ -17,7 +17,7 @@ export class AboutWhoComponent implements OnInit {
   }
 
   back2begin(){
-    this.route.navigateByUrl('/');
+    this.route.navigateByUrl('/menu');
   }
 
 

@@ -1,8 +1,55 @@
-<div class="row">
-    <div class="col-md-6" >
-        <h5 class="text-center">Configuración</h5>
+<div class="row animated fadeIn">
+  <div class="col-md-6">
+    <h5 class="text-center">Configuración</h5>
+    <br />
+    <h6 class="text-center">Etiquetas</h6>
+
+    <form>
+      <div class="form-row">
+        <div class="col">
+          <input type="text" [(ngModel)]="labels.name1" name="label1" class="form-control" placeholder="Etiqueta 1" />
+        </div>
+
+        <div class="col">
+          <input type="text"  [(ngModel)]="labels.name2" name="label2"  class="form-control" placeholder="Etiqueta 2" />
+        </div>
+
+        <div class="col">
+          <input type="text" [(ngModel)]="labels.name3" name="label3"  class="form-control" placeholder="Etiqueta 3" />
+        </div>
+      </div>
+    </form>
+    <br />
+    <h6 class="text-center">Datos</h6>
+    <form>
+      <div class="form-row">
+        <div class="col">
+          <input type="number" [(ngModel)]="numbers.data1" name="data1" class="form-control" placeholder="Dato 1" />
+        </div>
+
+        <div class="col">
+          <input type="number" [(ngModel)]="numbers.data2"  name="data2" class="form-control" placeholder="Dato 2" />
+        </div>
+
+        <div class="col">
+          <input type="number" [(ngModel)]="numbers.data3"   name="data3" class="form-control" placeholder="Dato 3" />
+        </div>
+      </div>
+    </form>
+    <br />
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <button type="button" class="btn btn-info" (click)="update(labels.name1, labels.name2, labels.name3, numbers.data1, numbers.data2, numbers.data3)">
+          Ingresar
+        </button>
+      </div>
+      <div class="col-md-4"></div>
     </div>
-    <div class="col-md-6" style="border-left: 1px solid lightgray;">
-       <h5 class="text-center">Gráfica</h5>
-    </div>
+  </div>
+  <div class="col-md-6" style="border-left: 1px solid lightgray;">
+    <h5 class="text-center">Gráfica</h5>
+    <!-- <p-chart type="bar" [data]="data"></p-chart> -->
+    <p-chart type="doughnut" [data]="data"></p-chart>
+  </div>
 </div>
