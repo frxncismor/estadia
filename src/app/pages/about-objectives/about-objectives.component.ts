@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-about-objectives',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutObjectivesComponent implements OnInit {
 
-  constructor() { }
+  constructor(public route: Router) { }
 
   ngOnInit(): void {
+  }
+
+  back2begin(){
+    this.route.navigateByUrl('/menu');
   }
 
 }
